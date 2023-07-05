@@ -1,0 +1,157 @@
+---
+---
+<style>
+  .centerXY {
+    position: relative;
+  }
+  .container1 {
+    position: absolute;
+    transform: skewY(-35deg) translateX(var(--tX)) translateY(var(--tY));
+  }
+  .container1:hover {
+    --box-color: 300 !important;
+    cursor: pointer;
+  }
+  .container1:hover .block1 {
+    --box-width: 65px;
+    --box-height: 65px;
+  }
+  /*side*/
+  .block1 {
+    --box-width: 60px;
+    --box-height: 60px;
+    --box-shade: 60%;
+    --border: 1px;
+    /* bug: little space between cube side*/
+    box-shadow: 0px 0px 3px 0px
+      hsl(var(--box-color), 100%, calc(var(--box-shade) - 20%));
+
+    height: calc(var(--box-height) + 10px);
+    width: calc(var(--box-width) - 10px);
+
+    background-color: hsl(var(--box-color), 100%, calc(var(--box-shade) - 20%));
+
+    transition: 0.2s;
+  }
+  /*front*/
+  .block1::before {
+    content: "";
+    position: absolute;
+
+    top: 0px;
+    left: calc((var(--box-width) * -1));
+
+    box-shadow: 0px 0px 3px 0px hsl(var(--box-color), 100%, var(--box-shade));
+
+    height: calc(var(--box-height) + 10px);
+    width: calc(var(--box-width));
+
+    transform-origin: right;
+    transform: skewY(45deg);
+
+    background-color: hsl(var(--box-color), 100%, var(--box-shade));
+
+    transition: 0.2s;
+  }
+  /*top*/
+  .block1::after {
+    content: "";
+    position: absolute;
+
+    top: calc(var(--box-height) * -1);
+    left: 0px;
+
+    height: calc(var(--box-height));
+    width: calc(var(--box-width) - 10px);
+
+    box-shadow: 0px 0px 3px 0px
+      hsl(var(--box-color), 100%, calc(var(--box-shade) - 15%));
+
+    transform-origin: bottom;
+    transform: skewX(45deg);
+
+    background-color: hsl(var(--box-color), 100%, calc(var(--box-shade) - 15%));
+
+    transition: 0.2s;
+  }
+  .vibrate-2 {
+    -webkit-animation: vibrate-2 0.3s linear infinite both;
+    animation: vibrate-2 4s linear infinite both;
+  }
+  @-webkit-keyframes vibrate-2 {
+    0% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-8px, 8px);
+      transform: translate(-8px, 8px);
+    }
+    40% {
+      -webkit-transform: translate(-8px, -8px);
+      transform: translate(-8px, -8px);
+    }
+    60% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+    80% {
+      -webkit-transform: translate(8px, -8px);
+      transform: translate(8px, -8px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+  }
+  @keyframes vibrate-2 {
+    0% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-8px, 8px);
+      transform: translate(-8px, 8px);
+    }
+    40% {
+      -webkit-transform: translate(-8px, -8px);
+      transform: translate(-8px, -8px);
+    }
+    60% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+    80% {
+      -webkit-transform: translate(8px, -8px);
+      transform: translate(8px, -8px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+  }
+</style>
+
+<div class="centerXY">
+  <div class="container1" style="--box-color:160; --tX:170%; --tY: 0%;">
+    <div class="block1"></div>
+  </div>
+  <div class="container1" style="--box-color:70; --tX:50%; --tY: 120%;">
+    <div class="block1"></div>
+  </div>
+  <div class="container1" style="--box-color:220; --tX:-100%; --tY: -100%;">
+    <div class="block1"></div>
+  </div>
+  <div class="container1" style="--box-color:10; --tX:50%; --tY: 0%;">
+    <div class="block1 vibrate-2"></div>
+  </div>
+  <div class="container1" style="--box-color:50; --tX:50%; --tY: -120%;">
+    <div class="block1"></div>
+  </div>
+  <div class="container1" style="--box-color:120; --tX:-70%; --tY: 0%;">
+    <div class="block1"></div>
+  </div>
+  <div class="container1" style="--box-color:190; --tX:190%; --tY: 100%;">
+    <div class="block1"></div>
+  </div>
+</div>

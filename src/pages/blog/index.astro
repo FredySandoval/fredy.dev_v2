@@ -1,0 +1,416 @@
+---
+import "../../styles/index.css";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+let posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+let pinned = posts.filter((item) => item.data.pinned !== undefined);
+let nonPinned = posts.filter((item) => item.data.pinned === undefined);
+pinned.sort((a, b) => a.data.pinned - b.data.pinned);
+for (let pin of pinned) {
+  nonPinned.splice(pin.data.pinned, 0, pin);
+}
+posts = nonPinned;
+---
+
+<Layout>
+  <div class="articles-wrapper">
+    <!-- START FIRST PART -->
+    <div class="article_style-1">
+      <a href={`/blog/${posts[0].slug}`} class="left-1">
+        <img
+          class="show-1"
+          src={`${posts[0].data.heroImage}`}
+          aria-labelledby="article-1-link-1"
+          alt="thumbnail"
+        />
+        <img
+          class="hidden-1"
+          src={`${posts[1].data.heroImage}`}
+          aria-labelledby="article-1-link-2"
+          alt="thumbnail"
+        />
+        <img
+          class="hidden-1"
+          src={`${posts[2].data.heroImage}`}
+          aria-labelledby="article-1-link-3"
+          alt="thumbnail"
+        />
+      </a>
+      <div class="right-1">
+        <article
+          class="a-block"
+          id="art-1"
+          onmouseenter="handle_img_switch_1(this)"
+        >
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[0].slug}`}
+            aria-labelledby="article-1-link-1"
+            aria-describedby="article-1-link-1"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[0].slug}`} id="article-1-link-1"
+                  ><span>{posts[0].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[0].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="a-block"
+          id="art-1"
+          onmouseenter="handle_img_switch_1(this)"
+        >
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[1].slug}`}
+            aria-labelledby="article-1-link-2"
+            aria-describedby="article-1-link-2"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[1].slug}`} id="article-1-link-2"
+                  ><span>{posts[1].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[1].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="a-block"
+          id="art-1"
+          onmouseenter="handle_img_switch_1(this)"
+        >
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[2].slug}`}
+            aria-labelledby="article-1-link-3"
+            aria-describedby="article-1-link-3"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[2].slug}`} id="article-1-link-3"
+                  ><span>{posts[2].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[2].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <script is:inline>
+      function handle_img_switch_1(el) {
+        const img = document.querySelectorAll("a.left-1 > img");
+        let arr = Array.from(img);
+
+        arr.forEach(function (item, index) {
+          if (item.classList.contains("show-1")) {
+            item.classList.remove("show-1");
+            item.classList.add("hidden-1");
+          }
+        });
+        const aria = el.firstElementChild.getAttribute("aria-labelledby");
+        const show = document.querySelector(
+          `a.left-1 > img[aria-labelledby="${aria}"]`
+        );
+        show.parentElement.setAttribute(
+          "href",
+          el.firstElementChild.getAttribute("href")
+        );
+        show.classList.remove("hidden-1");
+        show.classList.add("show-1");
+      }
+    </script>
+    <!-- END FIRST PART -->
+
+    <div class="article_style-2">
+      <article class="left-2 a-block">
+        <a
+          class="a-overlay"
+          href={`/blog/${posts[3].slug}`}
+          aria-labelledby="article-2-link-1"
+          aria-label="Article link"></a>
+        <div class="left-wrapper-2">
+          <div class="left-image-thumbnail-2 a-inner">
+            <img
+              src={`${posts[3].data.heroImage}`}
+              alt="Article image thumbnail"
+            />
+          </div>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[3].slug}`} id="article-2-link-1"
+                  ><span>{posts[3].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[3].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="left-2 a-block">
+        <a
+          class="a-overlay"
+          href={`/blog/${posts[4].slug}`}
+          aria-labelledby="article-2-link-2"
+          aria-label="Article link"></a>
+        <div class="left-wrapper-2">
+          <div class="left-image-thumbnail-2 a-inner">
+            <img
+              src={`${posts[4].data.heroImage}`}
+              alt="Article image thumbnail"
+            />
+          </div>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[4].slug}`} id="article-2-link-2"
+                  ><span>{posts[4].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[4].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="left-2 a-block">
+        <a
+          class="a-overlay"
+          href={`/blog/${posts[5].slug}`}
+          aria-labelledby="article-2-link-3"
+          aria-label="Article link"></a>
+        <div class="left-wrapper-2">
+          <div class="left-image-thumbnail-2 a-inner">
+            <img
+              src={`${posts[5].data.heroImage}`}
+              alt="Article image thumbnail"
+            />
+          </div>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[5].slug}`} id="article-2-link-3"
+                  ><span>{posts[5].data.title}</span></a
+                >
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[5].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="article_style-3">
+      <div class="left-3">
+        <article class="a-block">
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[6].slug}`}
+            aria-labelledby="article-3-link-1"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[6].slug}`} id="article-3-link-1">
+                  <span>{`${posts[6].data.title.substring(0, 50)}...`}</span>
+                </a>
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[6].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+
+        <article class="a-block">
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[7].slug}`}
+            aria-labelledby="article-3-link-2"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner">
+                <a href={`/blog/${posts[7].slug}`} id="article-3-link-2">
+                  <span>{`${posts[7].data.title.substring(0, 50)}...`}</span>
+                </a>
+              </h3>
+            </div>
+            <div class="right-tags-1 a-inner">
+              {
+                posts[7].data.tags.map((tag) => (
+                  <span class="tags-1">{tag}</span>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+
+        <article class="a-block">
+          <a
+            class="a-overlay"
+            href={`/blog/${posts[8].slug}`}
+            aria-labelledby="article-3-link-3"
+            aria-label="Article link"></a>
+          <div class="article-right-1">
+            <div class="right-title-1">
+              <h3 class="h3-article-1 a-inner"><a href={`/blog/${posts[8].slug}`} id="article-3-link-3"><span>{`${posts[8].data.title.substring(0, 50)}...`}</span></a></h3>
+            </div>
+            <div class="right-tags-1 a-inner">{posts[8].data.tags.map((tag) => (<span class="tags-1">{tag}</span>))}</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="right-3" onclick="handleModal(this)">
+        <div class="image-wrapper">
+          <img id="myImg" src={`${'/images/blog/meme1.webp'}`} alt="Meme of the day" />
+          <div class="modal" id="myModal">
+            <span class="close-2">&times;</span>
+            <img class="modal-content" id="img01" />
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <h3>meme of the day</h3>
+        </div>
+      </div>
+      <script is:inline>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var span = document.getElementsByClassName("close-2")[0];
+
+        function handleModal() {
+          if (!modal.style.display || modal.style.display === "none") {
+            modal.style.display = "block";
+          } else {
+            modal.style.display = "none";
+          }
+          modalImg.src = img.src;
+        }
+      </script>
+    </div>
+  <div class="article_style-2">
+
+    <article class="left-2 a-block">
+      <a class="a-overlay" href={`/blog/${posts[9].slug}`} aria-labelledby="article-3-a-link-1" aria-label="Article link"></a>
+      <div class="left-wrapper-2">
+        <div class="left-image-thumbnail-2 a-inner">
+          <img src={`${posts[9].data.heroImage}`} alt="Article image thumbnail" />
+        </div>
+        <div class="article-right-1">
+          <div class="right-title-1">
+            <h3 class="h3-article-1 a-inner">
+              <a href={`/blog/${posts[9].slug}`} id="article-3-a-link-1">
+                <span>{posts[9].data.title}</span>
+              </a>
+            </h3>
+          </div>
+          <div class="right-tags-1 a-inner">{posts[9].data.tags.map((tag) => (<span class="tags-1">{tag}</span>))}</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="left-2 a-block">
+      <a class="a-overlay" href={`/blog/${posts[10].slug}`} aria-labelledby="article-3-a-link-2" aria-label="Article link"></a>
+      <div class="left-wrapper-2">
+        <div class="left-image-thumbnail-2 a-inner">
+          <img src={`${posts[10].data.heroImage}`} alt="Article image thumbnail" />
+        </div>
+        <div class="article-right-1">
+          <div class="right-title-1">
+            <h3 class="h3-article-1 a-inner">
+              <a href={`/blog/${posts[10].slug}`} id="article-3-a-link-2">
+                <span>{posts[10].data.title}</span>
+              </a>
+            </h3>
+          </div>
+          <div class="right-tags-1 a-inner">{posts[10].data.tags.map((tag) => (<span class="tags-1">{tag}</span>))}</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="left-2 a-block">
+      <a class="a-overlay" href={`/blog/${posts[11].slug}`} aria-labelledby="article-3-a-link-3" aria-label="Article link"></a>
+      <div class="left-wrapper-2">
+        <div class="left-image-thumbnail-2 a-inner">
+          <img src={`${posts[11].data.heroImage}`} alt="Article image thumbnail" />
+        </div>
+        <div class="article-right-1">
+          <div class="right-title-1">
+            <h3 class="h3-article-1 a-inner">
+              <a href={`/blog/${posts[11].slug}`} id="article-3-a-link-3">
+                <span>{posts[11].data.title}</span>
+              </a>
+            </h3>
+          </div>
+          <div class="right-tags-1 a-inner">{posts[11].data.tags.map((tag) => (<span class="tags-1">{tag}</span>))}</div>
+        </div>
+      </div>
+    </article>
+
+
+  </div>
+
+
+  </div>
+</Layout>

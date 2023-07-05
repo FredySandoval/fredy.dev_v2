@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import Left from '../components/leftNav.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<!-- <script is:inline src="./src/scripts/lodash.custom.min.js"></script> -->
+		<script is:inline src="/lodash.custom.min.js"></script>
+		<title>Astro</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container">
+				<!-- <Main /> -->
+				<!-- <slot /> -->
+				<div class="content">
+
+					<!-- HEADER IN SMALL SCREENS -->
+					<input type="checkbox" id="check" >
+					<div class="top-buttons">
+
+						<style>
+							.top-buttons img {
+								float: right;
+								filter: brightness(50%);
+							}
+							label {
+								cursor: pointer;
+							}
+							.closed {
+								display: none;
+							 }
+							input {
+								opacity: 0;
+    						position: absolute;
+    						left: -1000px;
+    						top: -1000px;
+							 }
+							input[type="checkbox"]:checked + label > .open {
+								border: 1px solid red;
+								display: none;
+							}
+							input[type="checkbox"]:checked + label > .closed {
+								display: inline;
+							}
+						</style>
+						<style is:global>
+							input[type="checkbox"]:checked ~ .content-wrapper > .content-wrapper__left {
+								display: block;
+								position: absolute;
+								background-color: #ebebeb;
+								width: 80%;
+								z-index: 10;
+							}
+						</style>
+						<!-- <input type="checkbox" id="check" > -->
+						<label for="check">
+							<span class="open">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><g id="icon-park-solid:hamburger"><mask id="mask0_105_154" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><g id="svgIDa"><g id="Group"><path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M23 10.9C23 5.43245 18.0753 1 12 1C5.9247 1 1 5.43245 1 10.9H23Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path id="Vector_2" d="M1 19.7H23V23H1V19.7Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path id="Vector_3" d="M1 14.2L4.00025 16.4L7.99985 14.2L12 16.4L16.0002 14.2L19.9997 16.4L23 14.2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></g></mask><g mask="url(#mask0_105_154)"><path id="Vector_4" d="M0 0H24V24H0V0Z" fill="currentColor"></path></g></g></svg>
+							</span>
+							<span class="closed">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><g id="emojione-v1:heavy-multiplication-x"><path id="Vector" d="M18.9664 0.87029C16.6454 3.19266 14.3203 5.51544 12.0018 7.83821C9.67917 5.51665 7.35656 3.19388 5.03313 0.87029C2.34563 -1.81571 -1.8185 2.35001 0.867782 5.03601C3.18958 7.35635 5.51342 9.68034 7.83238 11.9999C5.51179 14.3214 3.18837 16.645 0.867782 18.9678C-1.8185 21.653 2.34766 25.8175 5.03313 23.1331C7.35493 20.8103 9.67755 18.488 12.0018 16.1652C14.3244 18.488 16.6454 20.8095 18.9664 23.1331C21.6531 25.8179 25.8176 21.653 23.1334 18.9682C20.8103 16.6454 18.4877 14.3239 16.1647 12.0003C18.4881 9.6779 20.8107 7.35513 23.1334 5.03235C25.8176 2.34716 21.6531 -1.81855 18.9664 0.867446" fill="currentColor"></path></g></svg>
+							</span>
+						</label>
+						<script is:inline>
+							function handleHamburgerChange(checkbox) {
+								const body = document.querySelector('body');
+								if ( checkbox.checked) {
+									document.querySelector('#navigation-menu').setAttribute('')
+								}
+							}
+						</script>
+						<img src="/smallF.png" alt="logo" width="20">
+						<!-- END HEADER IN SMALL SCREENS -->
+					</div>
+					<div class="content-wrapper">
+						<div class="content-wrapper__left">
+							<Left/></div>
+						<div class="content-wrapper__right">
+							<style>
+								.content-wrapper__right__main {
+									height: 100%;
+								}
+							</style>
+
+							<div class="content-wrapper__right__main"> 
+
+								<slot/> </div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>

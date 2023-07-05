@@ -1,0 +1,271 @@
+<style>
+  .squares {
+    height: 100%;
+    position: relative;
+  }
+
+  .squares > .layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(1) {
+    background: url("images/backred.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(2) {
+    background: url("images/leftgreen.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(3) {
+    background: url("images/blue.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(4) {
+    background: url("images/yellow.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(5) {
+    background: url("images/white.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(6) {
+    background: url("images/rightgreen.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .squares > .layer:nth-child(7) {
+    background: url("images/frontred.png") center;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .vibrate-1 {
+    -webkit-animation: vibrate-1 0.3s linear infinite both;
+    animation: vibrate-1 0.3s linear infinite both;
+  }
+
+  .center-to-left {
+    -webkit-animation: center-to-left 3s linear infinite both;
+    animation: center-to-left 3s linear infinite both;
+  }
+
+  .center-to-right {
+    -webkit-animation: center-to-right 3s linear infinite both;
+    animation: center-to-right 3s linear infinite both;
+  }
+
+  .center-to-top {
+    -webkit-animation: center-to-top 3s linear infinite both;
+    animation: center-to-top 3s linear infinite both;
+  }
+
+  .center-to-bottom {
+    -webkit-animation: center-to-bottom 3s linear infinite both;
+    animation: center-to-bottom 3s linear infinite both;
+  }
+
+  .green-to-left {
+    -webkit-animation: green-to-left 3s linear infinite both;
+    animation: green-to-left 3s linear infinite both;
+  }
+
+  .green-to-right {
+    -webkit-animation: green-to-right 3s linear infinite both;
+    animation: green-to-right 3s linear infinite both;
+  }
+
+  @-webkit-keyframes vibrate-1 {
+    0% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+
+    20% {
+      -webkit-transform: translate(-8px, 8px);
+      transform: translate(-8px, 8px);
+    }
+
+    40% {
+      -webkit-transform: translate(-8px, -8px);
+      transform: translate(-8px, -8px);
+    }
+
+    60% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+
+    80% {
+      -webkit-transform: translate(8px, -8px);
+      transform: translate(8px, -8px);
+    }
+
+    100% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+  }
+
+  @keyframes vibrate-1 {
+    0% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+
+    20% {
+      -webkit-transform: translate(-8px, 8px);
+      transform: translate(-8px, 8px);
+    }
+
+    40% {
+      -webkit-transform: translate(-8px, -8px);
+      transform: translate(-8px, -8px);
+    }
+
+    60% {
+      -webkit-transform: translate(8px, 8px);
+      transform: translate(8px, 8px);
+    }
+
+    80% {
+      -webkit-transform: translate(8px, -8px);
+      transform: translate(8px, -8px);
+    }
+
+    100% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+  }
+
+  @keyframes center-to-left {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(-50px, 50px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  @keyframes center-to-right {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(50px, -50px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  @keyframes center-to-top {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(0px, -25px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  @keyframes center-to-bottom {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(0px, 25px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  @keyframes green-to-left {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(-40px, -20px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+
+  @keyframes green-to-right {
+    0.0% {
+      transform: translate(0px, 0px);
+    }
+
+    50% {
+      transform: translate(40px, 20px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+</style>
+<div class="squares">
+  <div class="layer center-to-right"></div>
+  <div class="layer green-to-left"></div>
+  <div class="layer center-to-bottom"></div>
+  <div class="layer vibrate-1"></div>
+  <div class="layer center-to-top"></div>
+  <div class="layer green-to-right"></div>
+  <div class="layer center-to-left"></div>
+</div>
+<script>
+  // create a integer variable with a value of 0
+  let x = 0;
+  // create a function to change the value of x on user scroll
+  function changeY() {
+    // create a variable to store the value of the scroll
+    let scroll = window.scrollY;
+    // change the value of x to the value of the scroll
+    x = scroll;
+    let element = document.querySelector(".squares>.layer:nth-child(4)");
+    //@ts-ignore
+    if (element !== null) element.style.webkitFilter = `hue-rotate(${x}deg)`;
+  }
+  // add an event listener to the window to call the function on scroll
+  window.addEventListener("scroll", changeY);
+</script>

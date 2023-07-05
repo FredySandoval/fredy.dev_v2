@@ -1,0 +1,88 @@
+---
+import '../../styles/index.css';
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<style>
+    article.page-1 {
+        border-radius: var(--article-outer-border-radius);
+        background-color: var(--article-background-color);
+        border: 1px solid var(--article-border-color);
+        padding: 25px;
+        margin-bottom: 10px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    article.page-1 .content {
+
+        color: var(--article-text-color);
+        font-family: var(--font-family-1);
+        font-size: var(--article-text-size);
+    }
+
+    .page-1-left > .author-1, 
+    .page-1-left > .author-1 > strong>a,
+    .page-1-left > .posted-on-1
+    {
+        font-size: 1rem;
+        color: var(--article-author-text-color);
+    }
+
+    .page-1-left>figure {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: relative;
+        height: 500px;
+    }
+
+    .page-1-left > figure > img {
+        border-radius: var(--article-border-radius);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .page-1-left>div {
+        margin-bottom: 5px;
+    }
+</style>
+<style is:global>
+    h1 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    h2, h3 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .astro-code {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: rgb(56, 56, 56) !important;
+      border-radius: 8px;
+    }
+    article.page-1 .content p img {
+      max-width: 800px;
+    }
+
+</style>
+<Layout>
+<article class="page-1">
+      <div class="content">
+        <Content/>
+      </div>
+</article>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ButtonDarkmode from "./ButtonDarkmode.svelte";
+---
+
+<style>
+  html {
+    --bg: rgb(255, 255, 255);
+    --color: #18191b;
+    --background-hoverEffect: rgba(0, 0, 0, 0.123);
+    overflow: hidden;
+  }
+
+  html:not(.style-scope)[theme="dark"] {
+    --bg: #18191b;
+    --color: rgb(255, 255, 255);
+    --background-hoverEffect: rgba(255, 255, 255, 0.123);
+  }
+
+  /* body { */
+  .darkbutton {
+    background-color: var(--bg);
+    color: var(--color);
+
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 100px;
+  }
+
+  .bg-transition {
+    transition: background-color 0.3s;
+  }
+
+  .hoverEffect {
+    cursor: pointer;
+    transition: background-color 0.4s ease-out, color 0.4s ease-out;
+  }
+
+  .hoverEffect:hover {
+    background-color: var(--background-hoverEffect);
+  }
+</style>
+<Layout>
+  <div class="darkbutton">
+    <ButtonDarkmode client:only />
+  </div>
+</Layout>

@@ -1,0 +1,104 @@
+<style>
+#sprite-container {
+    
+    display: block;
+    /* border: 1px solid rgb(118, 255, 90); */
+    height: 100%;
+    background-image: url('images/css_sprites.png') ;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* animation: sprite 1s steps(8)  infinite; */
+    background-position: -0px;
+}
+#sprite-container.lazy {
+        background-image: none;
+        background-color: #F1F1FA;
+}
+@keyframes sprite {
+    100% {
+        background-position: -3184px;
+    }
+} 
+</style>
+<div class="lazy" id="sprite-container"></div>
+
+<script>
+  // from p5.js
+let constrain = (n, low, high) => {
+    return Math.max(Math.min(n, high), low);
+};
+let map = (n, start1, stop1, start2, stop2, withinBounds ) => {
+    const newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
+    if (!withinBounds) {
+        return newval;
+    }
+    if (start2 < stop2) {
+        return constrain(newval, start2, stop2);
+    }
+    else {
+        return constrain(newval, stop2, start2);
+    }
+};
+let normal = () => {
+    let scroll = window.scrollY;
+    let s = Math.abs((scroll % 200) - 100) - 100;
+    //@ts-ignore
+    let s2 = Math.abs(Math.floor(map(s, 0, 100, 0, 8)));
+    const docEle = document.querySelector('#sprite-container');
+    //@ts-ignore
+    docEle.style.backgroundPosition = `-${s2 * 400}px`;
+};
+// add an event listener to the window to call the function on scroll
+window.addEventListener("scroll", normal);
+
+</script>
+<script>
+  // https://css-tricks.com/the-complete-guide-to-lazy-loading-images/
+document.addEventListener("DOMContentLoaded", function () {
+    var lazyloadImages;
+    if ("IntersectionObserver" in window) {
+        lazyloadImages = document.querySelectorAll(".lazy");
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const image = entry.target;
+                    image.classList.remove("lazy");
+                    imageObserver.unobserve(image);
+                }
+            });
+        });
+        lazyloadImages.forEach((image) => {
+            imageObserver.observe(image);
+        });
+    }
+    else {
+        var lazyloadThrottleTimeout;
+        lazyloadImages = document.querySelectorAll(".lazy");
+        function lazyload() {
+            if (lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }
+            lazyloadThrottleTimeout = setTimeout(function () {
+                var scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function (img) {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.setAttribute("src", img.dataset.src);
+                        img.classList.remove('lazy');
+                    }
+                });
+                if (lazyloadImages.length == 0) {
+                    document.removeEventListener("scroll", lazyload);
+                    window.removeEventListener("resize", lazyload);
+                    window.removeEventListener("orientationChange", lazyload);
+                }
+            }, 20);
+        }
+        document.addEventListener("scroll", lazyload);
+        //@ts-ignore
+        window.addEventListener("resize", lazyload);
+        //@ts-ignore
+        window.addEventListener("orientationChange", lazyload);
+    }
+});
+</script>

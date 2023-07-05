@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<style>
+  .wrapper {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  pre.pre {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  .img1 {
+    width: 80%;
+    margin: 0 auto;
+  }
+</style>
+<Layout>
+  <div class="wrapper">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/UA2cKUqcGlM"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+
+    <br />
+    <br />
+    <br />
+    <h3>Chrome Extension - ChatGPT backup tool</h3>
+    <br />
+
+    <div class="content">
+      <a
+        href="https://chrome.google.com/webstore/detail/chatgpt-backup/majboohgjfdnegkhadaialohhlimolcc"
+        >ChatGPT-backup tool</a
+      >
+      <br />
+      <br />
+      <p>
+        Backup your OpenAI ChatGPT history in either JSON or Mardown format
+        Easily backup one or all your chat conversations in JSON or MARKDOWN.
+      </p>
+      <br />
+      <p>Key Features:</p>
+      <p>
+        Open Source: Chat Exporter is fully open-source, allowing users and
+        developers to explore its codebase, contribute improvements, and
+        customize the extension as needed. <a
+          href="https://github.com/FredySandoval/ChatGPT-CHROME_EXTENSION"
+          >https://github.com/FredySandoval/ChatGPT-CHROME_EXTENSION</a
+        >
+      </p>
+      <br />
+      <p>
+        Simple Interface: Chat Exporter provides an intuitive user interface
+        that makes downloading and managing chat data a breeze.
+      </p>
+      <br />
+      <p>
+        Multiple Format Support: Export your chats in JSON or Markdown format,
+        ensuring compatibility with various data processing and analysis tools.
+      </p>
+      <p>
+        Real-time Progress Updates: Stay informed about the download progress
+        with name-based updates, so you know exactly how much of your chat data
+        has been downloaded.
+      </p>
+      <br />
+      <p>
+        Easy Installation: Get started with Chat Exporter in just a few clicks.
+        Install the extension from the Chrome Web Store, and you&#39;re ready to
+        export your chats.
+      </p>
+      <p>
+        Whether you need to back up your chat history, analyze conversations, or
+        simply keep a record of your online interactions, Chat Exporter is the
+        perfect solution for all your chat exporting needs. Install Chat
+        Exporter today and take control of your chat data.
+      </p>
+
+      <br>
+      <h3>Features:</h3>
+      <br>
+      <p>
+        You can download the Chat is currently opened in JSON or in Markdown.
+        You can Download all Chats in one JSON file or a Zip file containing all
+        the markdowns. Options page where offsets can be configure. The log
+        appears in the extension, showing the number of downloaded chats. File
+        Tree Explanation:
+      </p>
+      <br>
+      <br>
+      <pre class="pre">
+ +-----------------------------------+                                                                 
+ | ChatGPT-backup                    |                                                                 
+ |             +------+ +----------+ |                                                                 
+ | Backup All: | json | | markdown | |                                                                 
+ |             +------+ +----------+ |                                                                 
+ |             +------+ +----------+ |                                                                 
+ | Backup One: | json | | markdown | |                                                                 
+ |             +------+ +----------+ |                                                                 
+ +-----------------------------------+                                                                 
+                                                                                                       
+ chrome-extention/                                                                                     
+ ├── icons/                                                                                            
+ │   ├── icon16.png                                                                                    
+ │   ├── icon32.png                                                                                    
+ │   ├── icon48.png                                                                                    
+ │   └── icon128.png                                                                                   
+ ├── options/                                                                                          
+ │   ├── options.html ---------- Set StartOffset, EndOffset.                                           
+ │   └── options.js              and other markdown configs.                                           
+ ├── popup/                                                                                            
+ │   ├── FileSaver.js ---------- Open Source tool to save (to maximize compatibility)                  
+ │   ├── jsZip.js -------------- For Markdown back, will put them all in zip file.                     
+ │   ├── popup.html  ----------- The Extension index.html (the entry point)                            
+ │   └── popup.js                                                                                      
+ ├── scripts/                                                                                          
+ │   └── content-script.js                                                                             
+ ├── manifest.json  ------------ V3 type, permissions, etc.                                            
+ └── service-worker.js --------- Code that interacts with host (chat.openai.com) .   
+</pre>
+    </div>
+    <br>
+    <br>
+    <h3>Preview Tool | <a href="https://fredysandoval.github.io/ChatGPT-CHROME_EXTENSION/">ChatGPT-CHROME_EXTENSION</a></h3>
+    <br>
+    <br>
+    <img src="https://raw.githubusercontent.com/abacaj/chatgpt-backup/main/assets/preview.png" alt="preview" class="img1">
+  </div>
+</Layout>

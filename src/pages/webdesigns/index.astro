@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro'
+const webp = await Astro.glob('./images/*.webp');
+const desc = [
+  'I created the Vector graphics in Figma',
+  'Monkey graphics created using AI',
+  'Dog created using AI',
+  'Woman created using AI',
+  'I created 3D astronaut in Blender'
+]
+---
+<style>
+  :root {
+    --wrapper_inner_width: 80%;
+  }
+  @media only screen and (max-width: 600px) {
+    :root {
+      --wrapper_inner_width: 100%;
+    }
+  }
+
+  .web_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper_inner {
+    width: var(--wrapper_inner_width);
+  }
+  .wrapper_inner picture {
+    display: flex;
+    justify-content: center;
+  }
+  .img_1 {
+    max-width: 70%;
+  } 
+  .caption-container {
+    margin: 0 auto;
+    max-width: 70%;
+    color: rgb(170, 170, 170);
+    font-size: 13px;
+  }
+</style>
+<Layout>
+  <div class="web_wrapper">
+    <div class="wrapper_inner">
+      {
+        webp.map((webp_src, index)=> (
+          <picture>
+            <source  srcset={webp_src.default}/>
+            <img class="img_1" src={webp_src.default.replace('webp', 'png')} alt="test" loading="lazy"/>
+          </picture>
+          <div class="caption-container">{desc[index]}</div>
+          <br>
+          <br>
+          <br>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,126 @@
+---
+import dark from './images/dark.png';
+import light from './images/light.png';
+---
+<style>
+  html {
+  --bg: rgb(255, 255, 255);
+  --color: #18191b;
+  --background-hoverEffect: rgba(0, 0, 0, 0.123);
+
+}
+
+html:not(.style-scope)[theme=dark] {
+  --bg: #18191b;
+  --color: rgb(255, 255, 255);
+  --background-hoverEffect: rgba(255, 255, 255, 0.123);
+}
+
+body {
+  background-color: var(--bg);
+}
+</style>
+<style>
+  .clickme {
+}
+.clickme > .flip-card {
+    background-color: black;
+}
+.flip-card-front > img, .flip-card-back > img {
+    width: 100%;
+}
+.flip-card-inner {
+    position: relative;
+    /* width: 100%;
+    height: 100%; */
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    color: gray;
+  }
+  
+  .rotate .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<div class="clickme" onclick="toggleClass(this, 'rotate'); handleClick()">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front"><img src={light} alt="Avatar"/></div>
+      <div class="flip-card-back"><img src={dark} alt="Avatar"/></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+function addClass(element, className) {
+    if (element.classList)
+        element.classList.add(className);
+    else
+        element.className += ` ${className}`;
+}
+function removeClass(element, className) {
+    if (element.classList)
+        element.classList.remove(className);
+    else
+        element.className = element.className.replace(new RegExp(`(^|\\b)${className.split(' ').join('|')}(\\b|$)`, 'gi'), ' ');
+}
+function checkClassNameExists(el, className) {
+    return el.className.indexOf(className) !== -1;
+}
+function toggleClass(el, className) {
+    console.log(checkClassNameExists(el, className));
+    if (checkClassNameExists(el, className)) {
+        removeClass(el, className);
+    }
+    else {
+        addClass(el, className);
+    }
+}
+
+</script>
+
+<script is:inline>
+  // This code prevents the “flash of incorrect theme” (FOIT).
+let themeOverride = localStorage.getItem("theme");
+if (!themeOverride &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+    themeOverride = "dark";
+if (!themeOverride)
+    themeOverride = "light";
+document.documentElement.setAttribute("theme", themeOverride);
+let bool = localStorage.getItem("theme");
+if (!bool && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    bool = "dark";
+if (!bool)
+    bool = "light";
+function setTheme(newTheme) {
+    document.body.classList.add("bg-transition"); // adds a smooth transition, if we add it to body element it creates a flash
+    document.documentElement.setAttribute("theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+}
+function handleClick() {
+    bool = bool == "light" ? "dark" : "light";
+    let theme = document.documentElement.getAttribute("theme") || "light";
+    if (theme === "light") {
+        setTheme("dark");
+        return;
+    }
+    setTheme("light");
+    console.log('clicked');
+}
+
+</script>

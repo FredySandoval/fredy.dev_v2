@@ -1,0 +1,19 @@
+{
+  "name": "structure-one",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^2.2.0",
+    "astro": "^2.5.1",
+    "postcss-nested": "^6.0.1",
+    "ripplet.js": "^1.1.0",
+    "svelte": "^3.59.1"
+  }
+}

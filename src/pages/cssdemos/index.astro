@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import './main-style.pcss';
+import './image-box.pcss';
+
+import Newanimations from './animations/newanimation/newanimations.astro';
+import Movingsquares from './animations/movingsquares/movingsquares.astro';
+import Hoverme from './animations/hoverme/hoverme.astro';
+import Spritescss from './animations/spritescss/spritescss.astro';
+import Clickme from './animations/clickme/clickme.astro';
+import Gifanimation from './animations/gifanimation/gifanimation.astro';
+import Menu3d from './animations/menu3d/menu3d.astro';
+---
+<Layout>
+
+<div class="main">
+  <div class="wrapper">
+    <div class="wrapper-row">
+
+      <div class="box-container left">
+        <div class="image-box">
+          <p class="message">Pure CSS Animation on Hover</p>
+          <div class="box"><Newanimations/></div>
+        </div>
+      </div>
+
+      <div class="box-container right">
+        <div class="image-box">
+          <p class="message">PNG Animation on Scroll</p>
+          <div class="box"><Movingsquares/></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- -- -->
+    <div class="wrapper-row">
+
+      <div class="box-container left">
+        <div class="image-box">
+          <p class="message">Hover ME! to stop me.</p>
+          <div class="box"><Hoverme/></div>
+        </div>
+      </div>
+
+      <div class="box-container right">
+        <div class="image-box">
+          <p class="message">CSS Sprite Animation on scroll</p>
+          <div class="box"><Spritescss/></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- -- -->
+
+    <!-- -- -->
+    <div class="wrapper-row">
+
+      <div class="box-container left">
+        <div class="image-box">
+          <p class="message">Click Me! to change dark/light mode.</p>
+          <div class="box"><Clickme/></div>
+        </div>
+      </div>
+
+      <div class="box-container right">
+        <div class="image-box">
+          <p class="message">GIF Animation</p>
+          <div class="box"><Gifanimation/></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- -- -->
+
+    <!-- -- -->
+    <div class="wrapper-row">
+
+      <div class="box-container left">
+        <div class="image-box">
+          <p class="message">CSS animations</p>
+          <div class="box"><Menu3d/></div>
+        </div>
+      </div>
+
+      <div class="box-container right">
+        <div class="image-box">
+          <p class="message"></p>
+          <div class="box"></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- -- -->
+
+  </div>
+</div>
+
+</Layout>

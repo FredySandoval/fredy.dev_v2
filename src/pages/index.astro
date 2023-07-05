@@ -1,0 +1,115 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<style>
+	.wrapper {
+		display: flex;
+		flex-direction: row;
+	}
+	.description {
+		/* border: 1px solid red; */
+		width: 40%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.video-container {
+		flex-grow: 1;
+		position: relative;
+		/* width: 100%; */
+		height: 0;
+		padding-bottom: 40%;
+		/* border: 1px solid black; */
+	}
+	.video-container video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		/* border: 1px solid blue; */
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	hr {
+		border-top: 1px solid #dddddd;
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+	}
+	.video-container img {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-40%, -50%);
+		width: 100px;
+		height: auto;
+	}
+	@media (max-width: 768px) {
+  .video-container img {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container img {
+    width: 40px;
+  }
+}
+#logo-1 {
+	filter: grayscale(1);
+}
+</style>
+<Layout>
+	<div class="wrapper">
+		<div class="description">
+			<h3>Fredy Sandoval</h3>
+			<hr />
+			<br />
+			<br />
+			<p>- Full Stack Developer</p>
+			<p>- UX/UI Designer</p>
+			<p>- English | Spanish Translator</p>
+			<p>- Certified Google Workspace Administrator</p>
+			<p>- 2D | 3D sketching and modeling</p>
+		</div>
+		<div class="video-container">
+			<video src="hero_1.webm" autoplay muted loop></video>
+			<img src="svgFcolor.png" alt="logo" id="logo-1" />
+
+			<script is:inline>
+				const image = document.getElementById('logo-1');
+				document.addEventListener('mousemove', _.throttle( handleMouseMove, 50));
+				function handleMouseMove(event) {
+					  // Get the coordinates of the mouse cursor
+  					const mouseX = event.clientX;
+  					const mouseY = event.clientY;
+
+  					// Get the position and dimensions of the image
+  					const imageRect = image.getBoundingClientRect();
+  					const imageX = imageRect.left + window.scrollX;
+  					const imageY = imageRect.top + window.scrollY;
+  					const imageWidth = imageRect.width;
+  					const imageHeight = imageRect.height;
+
+						// Calculate the distance between the mouse cursor and the image center
+					  const imageCenterX = imageX + imageWidth / 2;
+					  const imageCenterY = imageY + imageHeight / 2;
+					  const distance = Math.sqrt((mouseX - imageCenterX) ** 2 + (mouseY - imageCenterY) ** 2);
+
+						// Calculate the maximum distance from the center
+						const maxDistanceMultiplier = 10; // Adjust this value to control the size of the area
+						const maxDistance = Math.sqrt((imageWidth / 2) ** 2 + (imageHeight / 2) ** 2) * maxDistanceMultiplier;
+
+  					// Calculate the grayscale intensity based on the distance
+  					const grayscaleIntensity = (distance / maxDistance) * 100;
+
+  					// Update the image's grayscale filter
+  					image.style.filter = `grayscale(${grayscaleIntensity}%)`;
+				}
+			</script>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,123 @@
+<style>
+  .menu ul {
+    list-style-type: none;
+    padding-bottom: 20px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 0.75rem;
+    border-radius: 6px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 4px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    z-index: 1;
+  }
+
+  .row:hover {
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+  .row:hover::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    /* background-color: #7c7c7cad; */
+    background-image: url('/grid1.png');
+    background-size:400px;
+    background-position: center;
+    opacity: 0.6;
+
+    -webkit-mask-image: radial-gradient(40% 200% at var(--mouse-x, 0px) var(--mouse-y, 0px),black 0%, #0000005e 45%, transparent);
+    z-index: -1;
+
+  }
+  .title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding-left: 0.5rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .subtitle {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-left: 0.5rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0rem;
+  }
+  .active {
+    background-color: #3b3b3b;
+    color: white;
+  }
+</style>
+<nav class="menu">
+  <ul>
+    <li><h2 class="title">Info</h2></li>
+    <li><a class="row" href="/">About Me</a></li>
+    <li><a class="row" href="/blog">Blog</a></li>
+    <li><a class="row" href="/links">Link Tree</a></li>
+  </ul>
+  <h2 class="title">Projects</h2>
+  <ul>
+    <li><h2 class="title">FullStack</h2></li>
+    <li><a class="row" href="/chrome">Chrome Extension</a></li>
+    <li><a class="row" href="/filesharing">File Sharing</a></li>
+    <li><a class="row" href="/database">Database</a></li>
+    <li><a class="row" href="/docssite">Docs Site</a></li>
+  </ul>
+  <ul>
+    <li><h2 class="title">FrontEnd</h2></li>
+    <li><a class="row" href="/cssdemos">CSS Demos</a></li>
+    <li><a class="row" href="/darkbutton">DarkButton</a></li>
+    <li><a class="row" href="/tubesite">Tube Site</a></li>
+  </ul>
+  <ul>
+    <li><h2 class="title">UX|UI</h2></li>
+    <li><a class="row" href="/webdesigns">Web Designs</a></li>
+    <li><a class="row" href="/builtdesigns">Built Designs</a></li>
+  </ul>
+</nav>
+
+<script>
+  const nav = document.querySelector("nav.menu");
+  const navLinks = nav.querySelectorAll("a");
+  const currentURL = window.location.href;
+  navLinks.forEach((link) => {
+    if (link.href === currentURL) {
+      link.classList.add("active");
+    }
+  });
+
+
+  navLinks.forEach((row)=>{
+    function setMousePosition(event) {
+      const mouseX = event.clientX + window.scrollX; // Adjusted for scrolling
+      const mouseY = event.clientY + window.scrollY; // Adjusted for scrolling
+      const divX = row.offsetLeft;
+      const divY = row.offsetTop;
+      const relativeMouseX = mouseX - divX;
+      const relativeMouseY = mouseY - divY;
+      row.style.setProperty('--mouse-x', `${relativeMouseX}px`);
+      row.style.setProperty('--mouse-y', `${relativeMouseY}px`);
+    }
+    //@ts-ignore
+    row.addEventListener('mousemove', _.throttle( setMousePosition, 20))
+  })
+
+</script>
