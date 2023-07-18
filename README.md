@@ -3,6 +3,7 @@
 ```
 npm create astro@latest -- --template minimal
 ```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8aa7376b-37d2-48bf-9e18-55db84c1c73c/deploy-status)](https://app.netlify.com/sites/grand-tiramisu-c68bf0/deploys)
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)

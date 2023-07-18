@@ -63,6 +63,7 @@ body {
   padding-top: var(--wrapper-padding-t);
   padding-left: var(--wrapper-padding-l-r);
   padding-right: var(--wrapper-padding-l-r);
+  padding-bottom: 60px;
 }
 
 .container {
