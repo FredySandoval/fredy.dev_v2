@@ -6,7 +6,13 @@ import Layout from "../layouts/Layout.astro";
 	.wrapper {
 		display: flex;
 		flex-direction: row;
+		--font-size-fluid-0: clamp(.75rem, 1.5vw, 1rem);
+		--font-size-fluid-1: clamp(1rem, 2vw, 1.5rem);
+		--font-size-fluid-2: clamp(1.5rem, 3vw, 2.5rem);
+		--font-size-fluid-3: clamp(2rem, 4vw, 3.5rem);
+		font-size: var(--font-size-fluid-0) ;
 	}
+
 	.description {
 		/* border: 1px solid red; */
 		width: 40%;
@@ -14,6 +20,19 @@ import Layout from "../layouts/Layout.astro";
 		justify-content: center;
 		flex-direction: column;
 		padding-left: 100px;
+	}
+	@media screen and (max-width:480px) {
+		.wrapper {
+			flex-direction: column;
+		}
+		.description {
+			width: 100%;
+		}
+	}
+	@media screen and (max-width:768px) {
+	 .description {
+		padding-left: 10px;
+	 }	
 	}
 	.video-container {
 		flex-grow: 1;
@@ -67,9 +86,9 @@ import Layout from "../layouts/Layout.astro";
 		bottom: -40px;
 		left: 50%;
 		transform: translate(-40%, -50%);
-		width: 300px;
+		width: 240px;
 		height: auto;
-		z-index: 10;
+		z-index: 1;
 	}
 </style>
 <Layout>
