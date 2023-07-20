@@ -11,6 +11,8 @@ import Left from '../components/leftNav.astro';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<!-- <script is:inline src="./src/scripts/lodash.custom.min.js"></script> -->
+		<meta name="description" content="Fullstack Developer Portfolio Website of Fredy Sandoval">
+
 
 		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -29,7 +31,7 @@ import Left from '../components/leftNav.astro';
 				<div class="content">
 
 					<!-- HEADER IN SMALL SCREENS -->
-					<input type="checkbox" id="check" >
+					<input type="checkbox" id="check" aria-labelledby="hamburgericon" >
 					<div class="top-buttons">
 
 						<style>
@@ -67,7 +69,7 @@ import Left from '../components/leftNav.astro';
 							}
 						</style>
 						<!-- <input type="checkbox" id="check" > -->
-						<label for="check">
+						<label for="check" id="hamburgericon" aria-label="hamburger icon">
 							<span class="open">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><g id="icon-park-solid:hamburger"><mask id="mask0_105_154" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><g id="svgIDa"><g id="Group"><path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M23 10.9C23 5.43245 18.0753 1 12 1C5.9247 1 1 5.43245 1 10.9H23Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path id="Vector_2" d="M1 19.7H23V23H1V19.7Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path id="Vector_3" d="M1 14.2L4.00025 16.4L7.99985 14.2L12 16.4L16.0002 14.2L19.9997 16.4L23 14.2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></g></mask><g mask="url(#mask0_105_154)"><path id="Vector_4" d="M0 0H24V24H0V0Z" fill="currentColor"></path></g></g></svg>
 							</span>
