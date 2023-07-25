@@ -43,7 +43,3 @@ The Images have no background so they can merge with your own background.
 <img src="https://raw.githubusercontent.com/FredySandoval/illustrations/main/blender/isometric_illustration/10.png" width=300 alt="isometric shape">
 
 [Link to Download All](https://github.com/FredySandoval/illustrations/tree/main/blender/isometric_illustration)
-
-### 👇 Follow me on Twitter
-
-[![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40fsandovaldev&style=social&url=https%3A%2F%2Ftwitter.com%2Ffsandovaldev)](https://twitter.com/fsandovaldev)

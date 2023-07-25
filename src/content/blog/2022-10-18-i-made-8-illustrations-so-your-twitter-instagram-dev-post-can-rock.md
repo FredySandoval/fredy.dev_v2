@@ -81,7 +81,3 @@ Cover            |  Background
 ![python](https://raw.githubusercontent.com/FredySandoval/illustrations/main/blender/instagram_illustration_post/python/main_small.png)  |  ![python](https://raw.githubusercontent.com/FredySandoval/illustrations/main/blender/instagram_illustration_post/python/background_small.png)
 
 [Download](https://github.com/FredySandoval/illustrations/tree/main/blender/instagram_illustration_post/python)
-
-### 👇 Follow me on Twitter
-
-[![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40fsandovaldev&style=social&url=https%3A%2F%2Ftwitter.com%2Ffsandovaldev)](https://twitter.com/fsandovaldev)

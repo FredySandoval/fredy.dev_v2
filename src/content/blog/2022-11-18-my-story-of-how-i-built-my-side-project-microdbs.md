@@ -138,5 +138,3 @@ it('Create basic collection', async () => {
 ## FINAL RESULT
 
 ![MicroDBs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m6m0owytcn8gip2owqnp.PNG)
-
-### Follow me on Twitter 👇 [![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40fsandovaldev&style=social&url=https%3A%2F%2Ftwitter.com%2Ffsandovaldev)](https://twitter.com/fsandovaldev)

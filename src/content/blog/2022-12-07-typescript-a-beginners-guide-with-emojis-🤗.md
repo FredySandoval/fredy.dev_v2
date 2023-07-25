@@ -85,8 +85,3 @@ console.log( Square[2] );                 //  🟥
 let c: Square = Square.Blue;
 console.log( Square[c] );                 //  🟦
 ```
-
-Please Comment if you want to see more content like this!
-👇 Follow me on Twitter
-
-[![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40fsandovaldev&style=social&url=https%3A%2F%2Ftwitter.com%2Ffsandovaldev)](https://twitter.com/fsandovaldev)
